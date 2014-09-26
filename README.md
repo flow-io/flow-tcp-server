@@ -11,8 +11,6 @@ TCP Server
 $ npm install flow-tcp-server
 ```
 
-For use in the browser, use [browserify](https://github.com/substack/node-browserify).
-
 
 ## Usage
 
