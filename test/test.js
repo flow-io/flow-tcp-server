@@ -95,6 +95,31 @@ describe( 'flow-tcp-server', function tests() {
 		}
 	});
 
+	it( 'should throw an error if provided an invalid host IP', function test() {
+		expect( badValue ).to.throw( TypeError );
+
+		function badValue() {
+			createServer({'host': 'beep'}, function(){});
+		}
+	});
+
+	it( 'should throw an error if provided an invalid port', function test() {
+		var values = [
+				3.14,
+				-1
+			];
+
+		for ( var i = 0; i < values.length; i++ ) {
+			expect( badValue( values[i] ) ).to.throw( TypeError );
+		}
+
+		function badValue( value ) {
+			return function() {
+				createServer({'port': value}, function(){});
+			};
+		}
+	});
+
 	it( 'should return a server instance', function test() {
 		var server = createServer(function(){} );
 		assert.instanceOf( server, net.Server );

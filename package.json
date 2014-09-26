@@ -34,6 +34,8 @@
     "url": "https://github.com/flow-io/flow-tcp-server/issues"
   },
   "dependencies": {
+    "validate.io-integer": "^1.0.0",
+    "validate.io-ip-address": "^1.0.0",
     "validate.io-object": "^1.0.0"
   },
   "devDependencies": {
