@@ -41,7 +41,7 @@ function onReady() {
 }
 ```
 
-The `options` argument is not required. The default `host` is `127.0.0.1`, and the default `port` is `0`, i.e., assigned by the system.
+The `options` argument is not required. The default `host` is `127.0.0.1`, and the default `port` is one which is assigned by the system.
 
 The callback is invoked once the server is ready to accept TCP socket connections.
 
