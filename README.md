@@ -1,8 +1,8 @@
-flow-tcp-server
+TCP Server
 ===
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
 
-> Method to create a TCP server.
+> Thin wrapper for creating TCP servers.
 
 
 ## Installation
@@ -16,53 +16,39 @@ For use in the browser, use [browserify](https://github.com/substack/node-browse
 
 ## Usage
 
-To create a stream factory,
+To use the module,
 
 ``` javascript
-var flowFactory = require( 'flow-tcp-server' );
-
-// Create a new factory:
-var flowStream = flowFactory();
+var createServer = require( 'flow-tcp-server' );
 ```
 
-The factory has the following methods...
+The module exports a single method for creating [TCP servers](http://nodejs.org/api/net.html#net_class_net_server).
 
 
-#### flowStream.stream()
+#### createServer( [options,] clbk )
 
-To create a new stream,
+To create a server,
 
 ``` javascript
-var stream = flowStream.stream();
+var options = {
+	'host': '127.0.0.1',
+	'port': 1337	
+};
+
+var server = createServer( options, onReady );
+
+function onReady() {
+	var addr = server.address();
+	console.log( '...server is listening at %s on port %d...', addr.address, addr.port );
+}
 ```
+
+The `options` argument is not required. The default `host` is `127.0.0.1`, and the default `port` is `0`, i.e., assigned by the system.
+
+The callback is invoked once the server is ready to accept TCP socket connections.
 
 
 ## Examples
-
-``` javascript
-var eventStream = require( 'event-stream' ),
-	flowFactory = require( 'flow-tcp-server' );
-
-// Create some data...
-var data = new Array( 1000 );
-for ( var i = 0; i < data.length; i++ ) {
-	data[ i ] = Math.random();
-}
-
-// Create a readable stream:
-var readStream = eventStream.readArray( data );
-
-// Create a new stream:
-var stream = flowFactory().stream();
-
-// Pipe the data:
-readStream
-	.pipe( stream )
-	.pipe( eventStream.map( function( d, clbk ){
-		clbk( null, d.toString()+'\n' );
-	}))
-	.pipe( process.stdout );
-```
 
 To run the example code from the top-level application directory,
 

@@ -1,7 +1,7 @@
 {
   "name": "flow-tcp-server",
   "version": "0.0.0",
-  "description": "Method to create a TCP server.",
+  "description": "Thin wrapper for creating TCP servers.",
   "author": {
     "name": "Athan Reines",
     "email": "kgryte@gmail.com"
@@ -25,12 +25,17 @@
   "keywords": [
     "stream",
     "flow",
-    "flow.io"
+    "flow.io",
+    "tcp",
+    "server",
+    "socket"
   ],
   "bugs": {
     "url": "https://github.com/flow-io/flow-tcp-server/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "validate.io-object": "^1.0.0"
+  },
   "devDependencies": {
     "chai": "1.x.x",
     "mocha": "1.x.x",
